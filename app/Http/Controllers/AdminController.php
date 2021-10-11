@@ -7,7 +7,6 @@ use App\Http\Requests\Users\Admins\StoreAdminRequest;
 use App\Http\Requests\Users\Admins\UpdateAdminRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -16,6 +15,7 @@ class AdminController extends Controller
         $this->middleware('permission:admin_create')->only('create', 'store');
         $this->middleware('permission:admin_read')->only('index');
         $this->middleware('permission:admin_update')->only('edit', 'update');
+        $this->middleware('permission:admin_delete')->only('destroy');
     }
 
     public function index(AdminsDataTable $dataTable)
