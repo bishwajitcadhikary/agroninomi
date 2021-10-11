@@ -44,6 +44,7 @@
         @endif
 
     </div>
+    @include('adminlte::partials.common.modals')
 @stop
 
 @section('adminlte_js')

@@ -5,7 +5,10 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "ext-pdo_sqlite": "*",
+        "ext-sqlite3": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jeroennoten/laravel-adminlte": "^3.7",
@@ -14,9 +17,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "spatie/laravel-permission": "^5.1",
-        "ext-sqlite3": "*",
-        "ext-pdo_sqlite": "*",
-        "ext-json": "*"
+        "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",

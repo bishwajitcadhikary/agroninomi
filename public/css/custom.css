@@ -1,0 +1,5 @@
+.is-invalid {
+    color: #f14e4e !important;
+    font-weight: 500 !important;
+    border-color: rgb(185, 74, 72) !important;
+}
