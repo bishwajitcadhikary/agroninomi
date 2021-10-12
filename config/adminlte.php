@@ -128,7 +128,7 @@ return [
     'classes_content_header' => '',
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-secondary elevation-4',
-    'classes_sidebar_nav' => 'nav-flat',
+    'classes_sidebar_nav' => 'nav-child-indent',
     'classes_topnav' => 'navbar-black navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
@@ -245,6 +245,12 @@ return [
                     'url'   => '/users/clients',
                 ],
             ]
+        ],
+        [
+            'text'          => 'Apps',
+            'url'           => '/apps',
+            'icon'          => 'fab fa-fw fa-facebook',
+            'can'           => 'app_read'
         ],
     ],
 

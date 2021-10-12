@@ -11,6 +11,7 @@
 
         $(this).ajaxForm({
             success: function (response) {
+                console.log(response)
                 Toast.fire({
                     icon: 'success',
                     title: response
@@ -19,6 +20,7 @@
                 callBackFunction();
             },
             error: function (response) {
+                console.log(response)
                 let errors = response.responseJSON;
                 Toast.fire({
                     icon: 'error',

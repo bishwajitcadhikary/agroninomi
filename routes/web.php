@@ -20,7 +20,11 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-Route::group(['middleware' => 'auth', 'prefix' => 'users'], function (){
-    Route::resource('admins', \App\Http\Controllers\AdminController::class)->except('show');
-    Route::resource('clients', \App\Http\Controllers\ClientController::class)->except('show');
+Route::group(['middleware' => 'auth'], function (){
+    Route::group(['prefix' => 'users'], function (){
+        Route::resource('admins', \App\Http\Controllers\AdminController::class)->except('show');
+        Route::resource('clients', \App\Http\Controllers\ClientController::class)->except('show');
+    });
+
+    Route::resource('apps', \App\Http\Controllers\AppController::class)->except('show');
 });
