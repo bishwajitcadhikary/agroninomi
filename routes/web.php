@@ -27,4 +27,6 @@ Route::group(['middleware' => 'auth'], function (){
     });
 
     Route::resource('apps', \App\Http\Controllers\AppController::class)->except('show');
+    Route::get('pages/search', [\App\Http\Controllers\PageController::class, 'search'])->name('pages.search');
+    Route::resource('pages', \App\Http\Controllers\PageController::class)->except('show','edit','update');
 });

@@ -252,6 +252,12 @@ return [
             'icon'          => 'fab fa-fw fa-facebook',
             'can'           => 'app_read'
         ],
+        [
+            'text'          => 'Pages',
+            'url'           => '/pages',
+            'icon'          => 'fab fa-fw fa-facebook',
+            'can'           => 'page_read'
+        ],
     ],
 
     /*

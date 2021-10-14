@@ -21,7 +21,6 @@ class AppsDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        $facebook = new Facebook();
         return datatables()
             ->eloquent($query)
             ->addColumn('photo', function ($app){

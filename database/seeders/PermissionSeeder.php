@@ -37,12 +37,21 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'app_update']);
         Permission::create(['name' => 'app_delete']);
 
+        Permission::create(['name' => 'page_create']);
+        Permission::create(['name' => 'page_read']);
+        Permission::create(['name' => 'page_update']);
+        Permission::create(['name' => 'page_delete']);
+
         $admin = Role::create(['name' => 'admin']);
         $admin->givePermissionTo(Permission::all());
 
         $client = Role::create(['name' => 'client']);
         $client->givePermissionTo(
-            'dashboard_read'
+            'dashboard_read',
+            'page_create',
+            'page_read',
+            'page_update',
+            'page_delete'
         );
 
         $adminUser = User::create([
