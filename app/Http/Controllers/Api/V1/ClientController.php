@@ -35,10 +35,10 @@ class ClientController extends Controller
     {
         try {
             $request->validate([
-                'first_name' => ['required', 'string'],
-                'last_name' => ['required', 'string'],
+                'first_name' => ['nullable', 'string'],
+                'last_name' => ['nullable', 'string'],
                 'email' => ['required', 'string', 'unique:users'],
-                'password' => ['required', 'string']
+                'password' => ['nullable', 'string']
             ]);
 
             $user = User::create([

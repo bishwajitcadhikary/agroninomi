@@ -25,10 +25,10 @@ class StoreAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'string'],
-            'last_name' => ['required', 'string'],
+            'first_name' => ['nullable', 'string'],
+            'last_name' => ['nullable', 'string'],
             'email' => ['required', 'email', Rule::unique('users')],
-            'password' => ['required', 'string', 'min:6']
+            'password' => ['nullable', 'string', 'min:6']
         ];
     }
 }
