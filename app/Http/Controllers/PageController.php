@@ -36,42 +36,6 @@ class PageController extends Controller
         $location = $request->get('location');
         $fields = $request->get('fields');
 
-        //Demo Purpose
-        $demoResponse = Http::withHeaders([
-            'X-API-Key' => "fd638ca0"
-        ])->get("https://my.api.mockaroo.com/facebook_pages_search.json");
-
-        $decode = json_decode($demoResponse);
-
-        $demoData = ['data' => $decode];
-        $demoData = json_encode($demoData);
-        $demoData = json_decode($demoData);
-
-        $pages = [];
-        foreach ($demoData->data as $data){
-            foreach ($data->location as $value){
-                if ($location === ""){
-                    $pages[] = $data;
-                }else{
-                    $strpos = strpos($value, $location);
-                    $str_contains = str_contains($value, $location);
-
-                    if ($value == $location || $strpos === true || $str_contains) {
-                        $pages[] = $data;
-                    }
-                }
-            }
-        }
-
-        if (count($pages) > 0){
-            return view('pages.list', [
-                'pages' => $pages
-            ]);
-        }else{
-            return response()->json(['message' => 'Pages not found'], 404);
-        }
-        // End Demo
-
         $searchPages = $facebook->searchPages($name, $fields);
 
         if (isset($searchPages->error)){
