@@ -3,12 +3,12 @@
 
     <div class="form-group">
         <label for="first_name">First Name</label>
-        <input class="form-control" name="first_name" id="first_name" placeholder="Enter first name" required>
+        <input class="form-control" name="first_name" id="first_name" placeholder="Enter first name">
     </div>
 
     <div class="form-group">
         <label for="last_name">Last Name</label>
-        <input class="form-control" name="last_name" id="last_name" placeholder="Enter last name" required>
+        <input class="form-control" name="last_name" id="last_name" placeholder="Enter last name">
     </div>
 
     <div class="form-group">
@@ -17,8 +17,8 @@
     </div>
 
     <div class="form-group">
-        <label for="password">Email</label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
     </div>
 
     <button type="submit" class="btn btn-primary float-right">
