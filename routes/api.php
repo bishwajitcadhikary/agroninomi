@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [LoginController::class, 'login']);
-Route::post('/register', [LoginController::class, 'register']);
 
 Route::group(['as' => 'api', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/me', function (Request $request) {
