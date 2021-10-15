@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\AppRequest;
 use App\Models\App;
 use App\Services\Facebook;
-use Illuminate\Http\Request;
 use Throwable;
+use function response;
 
 class AppController extends Controller
 {
@@ -23,17 +24,13 @@ class AppController extends Controller
         return App::all();
     }
 
-    public function store(Request $request)
+    public function store(AppRequest $request)
     {
+        $validatedData = $request->validated();
         try {
-            $request->validate([
-                'client_id' => ['required', 'numeric'],
-                'client_secret' => ['required', 'string']
-            ]);
-
             $facebook = new Facebook();
-            $clientId = $request->input('client_id');
-            $clientSecret = $request->input('client_secret');
+            $clientId = $validatedData['client_id'];
+            $clientSecret = $validatedData['client_secret'];
             $oauthAccessToken = $facebook->oauthAccessToken($clientId, $clientSecret);
 
             if (isset($oauthAccessToken->error)) {
@@ -62,26 +59,23 @@ class AppController extends Controller
         }
     }
 
-    public function update(Request $request, App $app)
+    public function update(AppRequest $request, App $app)
     {
         try {
-            $request->validate([
-                'client_id' => ['required', 'numeric'],
-                'client_secret' => ['required', 'string']
-            ]);
+            $validatedData = $request->validated();
 
             $facebook = new Facebook();
-            $clientId = $request->input('client_id');
-            $clientSecret = $request->input('client_secret');
+            $clientId = $validatedData['client_id'];
+            $clientSecret = $validatedData['client_secret'];
             $oauthAccessToken = $facebook->oauthAccessToken($clientId, $clientSecret);
 
-            if (isset($oauthAccessToken->error)){
+            if (isset($oauthAccessToken->error)) {
                 return response()->json(['message' => $oauthAccessToken->error->message], 404);
             }
 
             $appInfo = $facebook->appInfo($clientId, $oauthAccessToken->access_token);
 
-            if (isset($appInfo->error)){
+            if (isset($appInfo->error)) {
                 return response()->json(['message' => $appInfo->error->message], 404);
             }
 
@@ -95,7 +89,7 @@ class AppController extends Controller
             ]);
 
             return response()->json('App Update Successfully');
-        }catch (Throwable $exception){
+        } catch (Throwable $exception) {
             return response()->json($exception->getMessage(), 422);
         }
     }
@@ -104,6 +98,6 @@ class AppController extends Controller
     {
         $app->delete();
 
-        return \response()->json('App Deleted Successfully');
+        return response()->json('App Deleted Successfully');
     }
 }

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\ClientRequest;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Throwable;
 
 class ClientController extends Controller
@@ -25,22 +23,9 @@ class ClientController extends Controller
         return User::role('client')->get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
         try {
-            $request->validate([
-                'first_name' => ['nullable', 'string'],
-                'last_name' => ['nullable', 'string'],
-                'email' => ['required', 'string', 'unique:users'],
-                'password' => ['nullable', 'string']
-            ]);
-
             $user = User::create([
                     'name' => $request->input('first_name') . ' ' . $request->input('last_name'),
                     'password' => bcrypt($request->input('password'))
@@ -54,34 +39,20 @@ class ClientController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return User
-     */
     public function show(User $client)
     {
         return $client;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return JsonResponse
-     */
-    public function destroy($id)
+    public function destroy(User $client)
     {
         try {
-            $client = User::findOrFail($id);
-
             $client->delete();
 
-            return \response()->json('Client Deleted Successfully');
-        }catch (ModelNotFoundException $exception){
-            return \response()->json('Client Not Found');
-        }catch (Throwable $exception){
+            return response()->json('Client Deleted Successfully');
+        } catch (ModelNotFoundException $exception) {
+            return response()->json('Client Not Found', 404);
+        } catch (Throwable $exception) {
             return response()->json($exception->getMessage(), 422);
         }
     }
