@@ -17,6 +17,7 @@ class ClientController extends Controller
         $this->middleware('permission:client_read')->only('index', 'show');
         $this->middleware('permission:client_create')->only('store');
         $this->middleware('permission:client_update')->only('update');
+        $this->middleware('permission:client_delete')->only('destroy');
     }
 
     public function index()

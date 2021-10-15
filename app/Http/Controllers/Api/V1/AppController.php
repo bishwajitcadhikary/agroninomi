@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\App;
 use App\Services\Facebook;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Throwable;
 
 class AppController extends Controller
@@ -16,6 +15,7 @@ class AppController extends Controller
         $this->middleware('permission:app_read')->only('index', 'show');
         $this->middleware('permission:app_create')->only('store');
         $this->middleware('permission:app_update')->only('update');
+        $this->middleware('permission:app_delete')->only('destroy');
     }
 
     public function index()
