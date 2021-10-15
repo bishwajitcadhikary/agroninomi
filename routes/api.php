@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AppController;
 use App\Http\Controllers\Api\V1\ClientController;
 use App\Http\Controllers\Api\V1\LoginController;
 use App\Http\Controllers\Api\V1\PageController;
@@ -13,6 +14,7 @@ Route::group(['as' => 'api', 'middleware' => 'auth:sanctum'], function () {
         return $request->user();
     });
 
+    Route::apiResource('apps', AppController::class)->except('show');
     Route::apiResource('clients', ClientController::class);
     Route::get('pages/search', [PageController::class, 'search'])->name('pages.search');
     Route::apiResource('pages', PageController::class);
