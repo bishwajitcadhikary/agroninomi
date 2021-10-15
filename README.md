@@ -8,17 +8,15 @@
 </p>
 
 ### Installation
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Install Packages
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   composer install --optimize-autoloader --no-dev
    ```
-3. Install NPM packages
+2. Copy Env File
    ```sh
-   npm install
+   cp.env.example .env
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Generate Secret Key
+   ```sh
+   php artisan key:generate
    ```
-<p align="right">(<a href="#top">back to top</a>)</p>
