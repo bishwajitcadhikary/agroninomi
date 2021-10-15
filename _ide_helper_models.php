@@ -46,12 +46,6 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $page_id
- * @property int|null $is_eligible_for_branded_content
- * @property int|null $is_unclaimed
- * @property string $link
- * @property string|null $location
- * @property string $name
- * @property string|null $verification_status
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -61,15 +55,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Page query()
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Page whereIsEligibleForBrandedContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Page whereIsUnclaimed($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Page whereLink($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Page whereLocation($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Page whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page wherePageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Page whereVerificationStatus($value)
  */
 	class Page extends \Eloquent {}
 }

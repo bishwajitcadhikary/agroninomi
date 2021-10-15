@@ -55,7 +55,7 @@ class ClientController extends Controller
             ] + $request->all());
 
 
-        return response()->json('Client Update Successfully');
+        return response()->json('Client Updated Successfully');
     }
 
     public function destroy(User $client)
