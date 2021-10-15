@@ -13,7 +13,7 @@ class LoginController extends Controller
     {
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
-                'message' => 'Credentials does not match'
+                'message' => 'Invalid Credentials'
             ], 401);
         }
 
