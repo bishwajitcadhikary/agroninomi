@@ -14,7 +14,7 @@ Route::group(['as' => 'api', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/me', function (Request $request) {
         return $request->user();
     });
-    Route::post('logout', [LogoutController::class, 'logout']);
+    Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
     Route::apiResource('apps', AppController::class)->except('show');
     Route::apiResource('clients', ClientController::class);
