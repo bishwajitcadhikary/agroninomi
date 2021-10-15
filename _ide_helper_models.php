@@ -67,8 +67,6 @@ namespace App\Models{
  * App\Models\User
  *
  * @property int $id
- * @property string|null $first_name
- * @property string|null $last_name
  * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -76,10 +74,14 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $first_name
+ * @property string|null $last_name
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\App[] $apps
  * @property-read int|null $apps_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Page[] $pages
+ * @property-read int|null $pages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
